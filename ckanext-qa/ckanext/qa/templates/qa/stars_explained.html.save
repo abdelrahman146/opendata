@@ -1,0 +1,16 @@
+{# Shows the five star openness_score meanings, optionally with a certain openness_score highlighted
+
+Pass in:
+  openness_score - number of stars (or None if you don't want to highlight a particular one)
+#}
+
+<div class="star-openness_score-entry {% if openness_score != None and openness_score < 5 %}fallo{% endif %}">&#9733&#9733&#9733&#9733&#9733&nbsp; Datos enlazables - datos en  URIs y enlazados con otros datos (ej. RDF)</div>
+
+<div class="star-openness_score-entry {% if openness_score != None and openness_score < 4 %}fallo{% endif %}">&#9733&#9733&#9733&#9733&#9734&nbsp; Datos enlazables - servidos en una URIs (ej. RDF)</div>
+
+<div class="star-openness_score-entry {% if openness_score != None and openness_score < 3 %}fallo{% endif %}">&#9733&#9733&#9733&#9734&#9734&nbsp; Datos estructurados en formato abierto (ej. CSV)</div>
+
+<div class="star-openness_score-entry {% if openness_score != None and openness_score < 2 %}fallo{% endif %}fail">&#9733&#9733&#9734&#9734&#9734&nbsp; Datos estructurados pero formato propietario (ej. Excel)</div>
+
+<div class="star-openness_score-entry {% if openness_score != None and openness_score < 1 %}fallo{% endif %}">&#9733&#9734&#9734&#9734&#9734&nbsp; Datos no estructurados (ej. PDF)</div>
+

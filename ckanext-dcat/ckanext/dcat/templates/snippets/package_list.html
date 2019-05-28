@@ -1,0 +1,37 @@
+{% ckan_extends %}
+
+{% block package_list %}
+{{ super() }}
+
+	<li id="custom-dataset-item" class="dataset-item">
+
+      <div class="dataset-content">
+
+          <h3 class="dataset-heading">
+             Exportar metadatos RDF-DCAT
+          </h3>
+
+      </div>
+
+
+
+            <ul class="dataset-resources unstyled">
+
+
+                <li>
+                  <a href="http://urlcatalogo/catalog.rdf" class="label" data-format="rdf">RDF</a>
+                </li>
+                <li>
+                  <a href="http://urlcatalogo/catalog.xml" class="label" data-format="xml">XML</a>
+                </li>
+                  <li>
+                  <a href="http://urlcatalogo/catalog.ttl" class="label" data-format="turtle">Turtle</a>
+                </li>
+            </ul>
+
+
+
+
+  </li>
+
+{% endblock %}

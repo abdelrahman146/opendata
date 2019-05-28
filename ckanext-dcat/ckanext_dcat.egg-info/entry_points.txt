@@ -1,0 +1,24 @@
+
+
+    [ckan.plugins]
+    dcat_xml_harvester=ckanext.dcat.harvesters:DCATXMLHarvester
+    dcat_json_harvester=ckanext.dcat.harvesters:DCATJSONHarvester
+
+    dcat_rdf_harvester=ckanext.dcat.harvesters:DCATRDFHarvester
+
+    dcat_json_interface=ckanext.dcat.plugins:DCATJSONInterface
+
+    dcat=ckanext.dcat.plugins:DCATPlugin
+
+    # Test plugins
+    test_rdf_harvester=ckanext.dcat.tests.test_harvester:TestRDFHarvester
+
+    [ckan.rdf.profiles]
+    extend_euro_dcat_ap=ckanext.dcat.profiles:ExtendEuropeanDCATAPProfile
+
+    [paste.paster_command]
+    generate_static = ckanext.dcat.commands:GenerateStaticDCATCommand
+
+    [babel.extractors]
+    ckan = ckan.lib.extract:extract_ckan
+    

@@ -1,0 +1,29 @@
+<!--
+@author	Fernando Hernangómez Rodríguez
+@copyright	2016 Cotesa
+@license 	http://www.gnu.org/licenses/gpl-2.0.html
+-->
+{% ckan_extends %}
+
+{% block secondary_content %}
+<div class="aside-image">
+	<img id="searchHeadImage" src="{{ h.url_for_static('/images/searchIcon.png') }}" alt="" />	
+</div>
+
+<div class="spatialBlock">
+	{% snippet "spatial/snippets/spatial_query.html", default_extent="[[39.003977902109774,-5.741386413574219], [38.95059840333903,-5.816917419433594]]" %}
+</div>
+
+<div class="filters">
+  <div>
+    {% for facet in c.facet_titles %}
+      {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
+    {% endfor %}
+  </div>
+  <a class="close no-text hide-filters"><em class="icon-remove-sign"></em><span class="text">close</span></a>
+</div>
+{{ super() }}
+{% endblock %}
+
+{% block package_search_results_api_inner %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% set intro = g.site_intro_text %}
+
+<div class="module-content box">
+	<header class="module-heading">
+	  <!--
+		{% if intro %}
+		  {{ h.render_markdown(intro) }}
+		{% else %}
+		-->
+		<span class="h1" class="page-heading">{{ _("Catálogo de conjuntos de datos") }}</span>
+	</header>
+	<div class="module-content">
+		<p>
+			Este catálogo de datos facilita el acceso, de forma centralizada, a las distintas distribuciones públicas (información y datos) del Ayuntamiento.
+			Estas distribuciones están a disposición de los usuarios organizadas y estructuradas por formatos, temáticas, organizaciones, entre otros criterios.
+		<!--
+        {% trans %}This is a nice introductory paragraph about CKAN or the site
+        in general. We don't have any copy to go here yet but soon we will
+        {% endtrans %}
+		-->
+		</p>
+	</div>
+	  <!--
+    {% endif %}
+	-->
+  
+<!--
+  {% block home_image %}
+-->
+<!--
+    <section class="featured media-overlay hidden-phone">
+      <h2 class="media-heading">{% block home_image_caption %}{{ _("This is a featured section") }}{% endblock %}</h2>
+      {% block home_image_content %}
+        <a class="media-image" href="#">
+          <img src="{{ h.url_for_static('/base/images/placeholder-420x220.png') }}" alt="Placeholder" width="420" height="220" />
+        </a>
+      {% endblock %}
+    </section>
+  {% endblock %}
+-->
+</div>

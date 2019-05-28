@@ -1,0 +1,5 @@
+
+    [ckan.plugins]
+
+    drupal7=ckanext.drupal7.plugin:Drupal7Plugin
+    

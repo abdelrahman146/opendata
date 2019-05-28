@@ -1,0 +1,12 @@
+README.rst
+ckanext/__init__.py
+ckanext/highlighting/__init__.py
+ckanext/highlighting/query_highlighting.py
+ckanext/highlighting/search_api.py
+ckanext_highlighting.egg-info/PKG-INFO
+ckanext_highlighting.egg-info/SOURCES.txt
+ckanext_highlighting.egg-info/dependency_links.txt
+ckanext_highlighting.egg-info/entry_points.txt
+ckanext_highlighting.egg-info/namespace_packages.txt
+ckanext_highlighting.egg-info/not-zip-safe
+ckanext_highlighting.egg-info/top_level.txt

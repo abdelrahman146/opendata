@@ -1,0 +1,6 @@
+
+        [ckan.plugins]
+        # Add plugins here, eg
+        # myplugin=ckanext.geonetwork:PluginClass
+        geonetwork_harvester=ckanext.geonetwork.harvesters:GeoNetworkHarvester
+            

@@ -1,0 +1,6 @@
+
+    
+    	[ckan.plugins]
+    	solr_highlighting=ckanext.highlighting.search_api:HighlightingSearchApi
+
+	

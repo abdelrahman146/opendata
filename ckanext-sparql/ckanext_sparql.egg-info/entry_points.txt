@@ -1,0 +1,7 @@
+
+    [ckan.plugins]
+        sparql=ckanext.sparql.plugin:SPARQLExtension
+        
+    [ckan.celery_task]
+        tasks = ckanext.sparql.celery_import:task_imports
+    

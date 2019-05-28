@@ -1,0 +1,4 @@
+
+    [ckan.plugins]
+	noregistration=ckanext.noregistration.plugins:NoSelfRegistration
+	

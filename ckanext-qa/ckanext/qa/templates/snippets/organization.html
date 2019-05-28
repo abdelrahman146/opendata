@@ -1,0 +1,16 @@
+{% ckan_extends %}
+
+{% block info %}
+  {{ super() }}
+
+  {% if c.pkg_dict %}
+    <div class="module module-narrow module-shallow context-info">
+      <nav class="module-heading"><em class="icon-eye-open"></em> {{ _('Nivel de apertura') }}</nav>
+      <section class="module-content">
+        {{ h.qa_openness_stars_dataset_html(c.pkg_dict) }}<br>
+      </section>
+    </div>
+  {% endif %}
+
+{% endblock %}
+

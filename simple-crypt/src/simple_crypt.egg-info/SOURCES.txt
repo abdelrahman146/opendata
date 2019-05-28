@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+README.txt
+src/simple_crypt.egg-info/PKG-INFO
+src/simple_crypt.egg-info/SOURCES.txt
+src/simple_crypt.egg-info/dependency_links.txt
+src/simple_crypt.egg-info/pbr.json
+src/simple_crypt.egg-info/requires.txt
+src/simple_crypt.egg-info/top_level.txt
+src/simplecrypt/__init__.py
+src/simplecrypt/example.py
+src/simplecrypt/tests.py

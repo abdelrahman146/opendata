@@ -1,0 +1,14 @@
+setup.py
+ckanext/__init__.py
+ckanext/geonetwork/__init__.py
+ckanext/geonetwork/harvesters/__init__.py
+ckanext/geonetwork/harvesters/geonetwork.py
+ckanext/geonetwork/harvesters/utils.py
+ckanext_geonetwork.egg-info/PKG-INFO
+ckanext_geonetwork.egg-info/SOURCES.txt
+ckanext_geonetwork.egg-info/dependency_links.txt
+ckanext_geonetwork.egg-info/entry_points.txt
+ckanext_geonetwork.egg-info/namespace_packages.txt
+ckanext_geonetwork.egg-info/not-zip-safe
+ckanext_geonetwork.egg-info/pbr.json
+ckanext_geonetwork.egg-info/top_level.txt

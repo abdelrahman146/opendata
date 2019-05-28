@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: ckanext-dataproxy
+Version: 0.2.0
+Summary: Proxy data from external databases
+Home-page: https://github.com/cphsolutionslab/ckanext-dataproxy
+Author: Fadeit Aps
+Author-email: ja@fadeit.dk
+License: UNKNOWN
+Description: 
+            
+Platform: UNKNOWN

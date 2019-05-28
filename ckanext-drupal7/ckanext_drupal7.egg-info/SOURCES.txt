@@ -1,0 +1,12 @@
+README.rst
+setup.py
+ckanext/__init__.py
+ckanext/drupal7/__init__.py
+ckanext/drupal7/plugin.py
+ckanext_drupal7.egg-info/PKG-INFO
+ckanext_drupal7.egg-info/SOURCES.txt
+ckanext_drupal7.egg-info/dependency_links.txt
+ckanext_drupal7.egg-info/entry_points.txt
+ckanext_drupal7.egg-info/namespace_packages.txt
+ckanext_drupal7.egg-info/not-zip-safe
+ckanext_drupal7.egg-info/top_level.txt

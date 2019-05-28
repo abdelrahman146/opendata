@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: ckanext-scheming
+Version: 1.0.0
+Summary: Easy, sharable custom CKAN schemas
+Home-page: https://github.com/open-data/ckanext-scheming
+Author: Government of Canada, Government of Western Australia
+Author-email: ian@excess.org, Florian.Mayer@dpaw.wa.gov.au
+License: MIT
+Description: Fork by Dept Parks & Wildlife, Western Australia
+            
+Platform: UNKNOWN

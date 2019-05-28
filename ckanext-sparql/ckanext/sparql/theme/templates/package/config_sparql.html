@@ -1,0 +1,148 @@
+<html xmlns:py="http://genshi.edgewall.org/"
+  xmlns:i18n="http://genshi.edgewall.org/i18n"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  py:strip="">
+
+  <py:def function="page_title">Edit SPARQL Enpoint: ${c.pkg.name}</py:def>
+  <py:def function="page_heading">Edit SPARQL Endpoint: ${c.pkg.name}</py:def>
+
+  <div py:match="content">
+    <div class="tabbable tabs-left">
+      <ul class="nav nav-tabs">
+        <li class="${'active' if (not c.uploadwarningmessage and not c.uploadsuccessmessage and not c.uploaderrormessage) or c.warningmessage or c.successmessage else ''}"><a data-toggle="tab" href="#rdf-store">RDF Store configuration</a></li>
+        <li class="${'active' if (c.uploadwarningmessage or c.uploadsuccessmessage or c.uploaderrormessage) and not c.warningmessage and not c.successmessage else ''}" py:if="not c.noendpoint and c.enabled"><a data-toggle="tab" href="#update-data">Upload RDF data</a></li>
+      </ul>
+      <div class="tab-content">
+
+        <div class="tab-pane ${'active' if (not c.uploadwarningmessage and not c.uploadsuccessmessage and not c.uploaderrormessage) or c.warningmessage or c.successmessage  else ''}" id="rdf-store">
+          <div class="alert" py:if="c.warningmessage != None">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            ${c.warningmessage}
+          </div>
+          <div class="alert alert-success" py:if="c.successmessage != None">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            ${c.successmessage}
+          </div>
+          <form 
+            id="admin-rdfstore-configuration" 
+            action="/dataset/${c.pkg.name}/edit/sparql" 
+            method="post"
+            class="form-horizontal"
+            xmlns:i18n="http://genshi.edgewall.org/i18n"
+            xmlns:py="http://genshi.edgewall.org/"
+            xmlns:xi="http://www.w3.org/2001/XInclude">
+
+            <div class="control-group">
+              <h4>Select endpoint</h4>
+              <label class="control-label" for="globalendpoint">Available endpoints</label>
+              <div class="controls">
+                <select id="globalendpoint" name="globalendpoint" onchange="showCustomEndpointDiv()">
+                  <option value="global" selected="${'selected' if c.globalendpointselected else None}" py:if="c.globalendpoint">Global endpoint</option>
+                  <option value="noendpoint" selected="${'selected' if c.noendpoint else None}">None</option>
+                  <option value="custom" selected="${'selected' if ((not c.globalendpointselected and not c.noendpoint) or c.form_error != '') else None}">Custom endpoint</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="customendpoint" style="${'display: none;' if ((c.globalendpoint and c.globalendpointselected) or c.noendpoint) else ''}">
+              <xi:include href="../snippets/form_rdfstore.html" />
+            </div>
+
+            <div class="form-actions">
+              <input id="save" class="btn btn-primary" name="save" type="submit" value="Save Changes" />
+            </div>
+          </form>
+
+          <div id="endpointstatus" py:if="c.storeconfigform['endpoint_enabled'] != None and not c.globalendpointselected and not c.noendpoint">
+            <h2>SPARQL Endpoint status</h2>
+            <form 
+              id="admin-rdfstore-enabledisable" 
+              action="/dataset/${c.pkg.name}/edit/sparql"
+              method="post"
+              class="form-horizontal"
+              xmlns:i18n="http://genshi.edgewall.org/i18n"
+              xmlns:py="http://genshi.edgewall.org/"
+              xmlns:xi="http://www.w3.org/2001/XInclude">
+              <div class="control-group">
+                <label class="control-label" for="endpointenabled">SPARQL endpoint ${'enabled' if c.storeconfigform.endpoint_enabled else 'disabled'} </label>
+                <div class="controls">
+                  <input id="${'disable' if c.storeconfigform.endpoint_enabled else 'enable'}" class="btn btn-primary" name="${'disable' if c.storeconfigform.endpoint_enabled else 'enable'}" type="submit" value="${'Disable' if c.storeconfigform.endpoint_enabled else 'Enable'}" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="tab-pane ${'active' if (c.uploadwarningmessage or c.uploadsuccessmessage or c.uploaderrormessage) and not c.warningmessage and not c.successmessage else ''}" id="update-data" py:if="not c.noendpoint and c.enabled">
+          <form 
+            id="admin-rdfstore-configuration" 
+            action="/dataset/${c.pkg.name}/edit/sparql"
+            method="post"
+            enctype="multipart/form-data"
+            class="form-horizontal"
+            xmlns:i18n="http://genshi.edgewall.org/i18n"
+            xmlns:py="http://genshi.edgewall.org/"
+            xmlns:xi="http://www.w3.org/2001/XInclude">
+
+            <div class="alert" py:if="c.uploadwarningmessage != None">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              ${c.uploadwarningmessage}
+            </div>
+            <div class="alert alert-success" py:if="c.uploadsuccessmessage != None">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              ${c.uploadsuccessmessage}
+            </div>
+            <div class="alert alert-error" py:if="c.uploaderrormessage != None">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              ${c.uploaderrormessage}
+            </div>
+
+            <py:choose>
+              <py:when test="not c.uploadsuccessmessage or 'Uploading data...' not in c.uploadsuccessmessage">
+                <div>
+                  <h4>Upload RDF data</h4>
+                  <p>Upload a file:</p>
+                  <p><input type="file" name="rdf_file" id="rdf_file" /></p>
+                  <p>Or paste it directly:</p>
+                  <textarea rows="13" class="span6" name="rdf_text" id="rdf_text"></textarea>
+                  <br /><br />
+                  <p>
+                    RDF format: 
+                    <select id="rdf_format" name="rdf_format">
+                     <option value="${ format }" py:for="label, format in c.supported_rdf_syntaxes.items()">${ label }</option>
+                    </select>
+                  </p>
+                  <input id="upload_rdf" class="btn btn-primary" name="upload_rdf" type="submit" value="Upload data" />
+                </div>              
+              </py:when>
+              <py:otherwise>
+                Refresh the page clicking <a href="#" onclick="refreshPage()" id="refreshpage">here</a>.
+              </py:otherwise>
+            </py:choose>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function refreshPage() {
+        location.reload();
+      }
+
+      function showCustomEndpointDiv() {
+        var endpointSelect = document.getElementById('globalendpoint');
+        var selectedValue = endpointSelect.options[endpointSelect.selectedIndex].value;
+        var customEndpointDiv = document.getElementById('customendpoint');
+        var endpointStatusDiv = document.getElementById('endpointstatus');
+        if (selectedValue == 'global' || selectedValue == 'noendpoint') {
+          customEndpointDiv.style.display = 'none';
+          endpointStatusDiv.style.display = 'none';
+        } else {
+          customEndpointDiv.style.display = 'block';
+          endpointStatusDiv.style.display = 'block';
+        }
+      }
+    </script>
+  </div>
+
+  <xi:include href="layout.html" />
+</html>

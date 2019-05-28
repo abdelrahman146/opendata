@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: ckanext-highlighting
+Version: 0.1
+Summary: solr highlighting plugin for CKAN
+Home-page: http://transparenz.hamburg.de/
+Author: Fachliche Leitstelle Transparenzportal, Hamburg, Germany; Esra Uenal FOKUS, Fraunhofer Berlin, Germany
+Author-email: transparenzportal@kb.hamburg.de
+License: AGPL
+Description: 	
+Platform: UNKNOWN

@@ -1,0 +1,5 @@
+
+        [ckan.plugins]
+        dataproxy=ckanext.dataproxy.plugin:DataproxyPlugin
+        dataproxy_view=ckanext.dataproxy.plugin:DataproxyView
+    

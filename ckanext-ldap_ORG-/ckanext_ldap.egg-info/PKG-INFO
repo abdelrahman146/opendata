@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: ckanext-ldap
+Version: 0.1
+Summary: CKAN plugin to provide LDAP authentication
+Home-page: https://github.com/NaturalHistoryMuseum/ckanext-ldap
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN

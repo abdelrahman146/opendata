@@ -1,0 +1,27 @@
+--- cli.py.orig 2015-09-16 08:15:13.147826198 +0000
++++ cli.py  2015-09-16 09:51:10.695982429 +0000
+@@ -984,7 +984,9 @@
+         celeryd <run>            - run the celery daemon
+         celeryd run concurrency  - run the celery daemon with
+                                    argument 'concurrency'
+-        celeryd view             - view all tasks in the queue
++        celeryd run beat         - run the celery daemon with
++                  argument 'beat'
++   celeryd view             - view all tasks in the queue
+         celeryd clean            - delete all tasks in the queue
+     '''
+     min_args = 0
+@@ -1020,8 +1022,11 @@
+
+         from ckan.lib.celery_app import celery
+         celery_args = []
+-        if len(self.args) == 2 and self.args[1] == 'concurrency':
+-            celery_args.append['--concurrency=1']
++        if len(self.args) == 2:
++            if self.args[1] == 'concurrency':
++                celery_args.append('--concurrency=1')
++            if self.args[1] == 'beat':
++                celery_args.append('--beat')
+         celery.worker_main(argv=['celeryd', '--loglevel=INFO'] + celery_args)
+
+     def view(self):

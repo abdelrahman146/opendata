@@ -1,0 +1,195 @@
+{
+  "scheming_version": 1,
+  "dataset_type": "application",
+  "about":"Metadata schema for DPaW applications",
+  "about_url": "http://github.com/florianm/ckanext-scheming",
+  "dataset_fields": [
+    {
+      "field_name": "title",
+      "label": "Application name",
+      "validators": "if_empty_same_as(name) unicode",
+      "form_snippet": "large_text.html",
+      "form_attrs": {"data-module": "slug-preview-target"},
+      "form_placeholder": "Application Name"
+    },
+    {
+      "field_name": "name",
+      "label": "URL slug",
+      "validators": "not_empty unicode name_validator package_name_validator",
+      "form_snippet": "slug.html",
+      "form_placeholder": "eg. my-app-name"
+    },
+    {
+      "field_name": "notes",
+      "label": "Purpose",
+      "form_snippet": "markdown.html",
+      "form_placeholder": "The purpose of the application"
+    },
+    {
+      "field_name": "tag_string",
+      "label": "Tags",
+      "validators": "ignore_missing tag_string_convert",
+      "form_placeholder": "e.g. asset_, region_, indicator_",
+      "form_attrs": {
+        "data-module": "autocomplete",
+        "data-module-tags": "",
+        "data-module-source": "/api/2/util/tag/autocomplete?incomplete=?"
+      }
+    },
+    {
+      "field_name": "owner_org",
+      "label": "Organization",
+      "validators": "owner_org_validator unicode",
+      "form_snippet": "organization.html"
+    },
+    {
+      "field_name": "url",
+      "label": "Entry point",
+      "help_text": "Application URL",
+      "help_inline": true,
+      "form_placeholder": "http://application.dpaw.wa.gov.au/",
+      "display_property": "foaf:homepage",
+      "display_snippet": "link.html"
+    },
+    {
+      "field_name": "application_owner",
+      "label": "Application Owner",
+      "help_text": "Responsible for strategic decisions",
+      "help_inline": true,
+      "display_field": false, 
+      "form_placeholder": "Joe Bloggs",
+      "display_property": "dc:creator"
+    },
+    {
+      "field_name": "owner_email",
+      "label": "Owner Email",
+      "form_placeholder": "joe@example.com",
+      "display_property": "dc:creator",
+      "display_snippet": "email.html",
+      "display_email_name_field": "application_owner"
+    },
+    {
+      "field_name": "application_custodian",
+      "label": "Application Custodian",
+      "help_text": "Responsible for operational and technical aspects",
+      "help_inline": true,
+      "display_field": false, 
+      "form_placeholder": "Joe Bloggs",
+      "display_property": "dc:contributor"
+    },
+    {
+      "field_name": "custodian_email",
+      "label": "Custodian Email",
+      "form_placeholder": "joe@example.com",
+      "display_property": "dc:contributor",
+      "display_snippet": "email.html",
+      "display_email_name_field": "application_custodian"
+    },
+    {
+      "field_name": "application_audience",
+      "label": "Application Audience",
+      "help_text": "Prospective application users",
+      "help_inline": true,
+      "form_placeholder": "Joe Bloggs",
+      "display_property": "dc:creator"
+    },
+    {
+      "field_name":"deployment_status",
+      "label": "Status",
+      "help_text": "The life cycle stage of the application",
+      "help_inline": true,
+      "preset": "select",
+      "choices": [
+        {"value":"proposed", "label":"Proposed"},
+        {"value":"development", "label":"In Development"},
+        {"value":"production", "label":"In Production"},
+        {"value":"decommissioned", "label":"Decommissioned"}
+      ]
+    },
+    {
+      "field_name":"knowledge_management_stage",
+      "label": "KM stage",
+      "help_text": "The knowledge management stage of the application",
+      "help_inline": true,
+      "preset": "select",
+      "choices": [
+        {"value":"data", "label":"Data"},
+        {"value":"information", "label":"Information"},
+        {"value":"knowledge", "label":"Knowledge"},
+        {"value":"wisdom", "label":"Wisdom"}
+      ]
+    },
+    {
+      "field_name":"business_stage",
+      "label": "Business Stage",
+      "help_text": "The business stage of the application",
+      "help_inline": true,
+      "preset": "select",
+      "choices": [
+        {"value":"planning", "label":"Planning"},
+        {"value":"acquisition", "label":"Data acquisition"},
+        {"value":"quality_control", "label":"Quality Control Operations"},
+        {"value":"analysis", "label":"Analysis"},
+        {"value":"publication", "label":"Publication"},
+        {"value":"discovery", "label":"Discovery"}
+      ]
+    },
+    {
+      "field_name": "restrictions",
+      "label": "Restrictions",
+      "help_text": "Caused by sensitivity of information",
+      "help_inline": true,
+      "form_placeholder": "",
+      "display_property": ""
+    },
+    {
+      "field_name": "legislation",
+      "label": "Legislation",
+      "help_text": "Does the application interact or support any legislation?",
+      "help_inline": true,
+      "form_placeholder": "List of any Legislation",
+      "display_property": ""
+    },
+    {
+      "field_name": "managed_risks",
+      "label": "Managed Risks",
+      "help_text": "List any risks managed by the application",
+      "help_inline": true,
+      "form_placeholder": "Fire, Invasive Species, ...",
+      "display_property": ""
+    }
+  ],
+  "resource_fields": [
+    {
+      "field_name": "url",
+      "label": "URL",
+      "validators": "not_empty unicode remove_whitespace",
+      "form_snippet": "upload.html",
+      "form_placeholder": "http://example.com/my-data.csv",
+      "upload_field": "upload",
+      "upload_clear": "clear_upload",
+      "upload_label": "File"
+    },
+    {
+      "field_name": "name",
+      "label": "Name",
+      "form_placeholder": "eg. Observations of X at Y"
+    },
+    {
+      "field_name": "description",
+      "label": "Description",
+      "form_snippet": "markdown.html",
+      "form_placeholder": "Some useful notes"
+    },
+    {
+      "field_name": "format",
+      "label": "Format",
+      "validators": "if_empty_guess_format ignore_missing clean_format unicode",
+      "form_placeholder": "eg. CSV, PDF, JPG, PNG, GeoJSON, XML",
+      "form_attrs": {
+        "data-module": "autocomplete",
+        "data-module-source": "/api/2/util/resource/format_autocomplete?incomplete=?"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: ckanext-sparql
+Version: 0.1
+Summary: SPARQL adapter for CKAN.
+Home-page: http://www.morelab.deusto.es/
+Author: Jon Lazaro
+Author-email: jlazaro@deusto.es
+License: UNKNOWN
+Description: 	
+Platform: UNKNOWN
